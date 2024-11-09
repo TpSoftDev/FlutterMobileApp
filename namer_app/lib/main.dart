@@ -86,17 +86,15 @@ class _MyHomePageState extends State<MyHomePage> {
     switch (selectedIndex) {
       case 0:
         page = GeneratorPage();
-        break;
       case 1:
         page = FavoritesPage();
-        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
 
     // Main area container with background color and animation
     var mainArea = ColoredBox(
-      color: colorScheme.surfaceVariant,
+      color: colorScheme.surfaceContainerHighest,
       child: AnimatedSwitcher(
         duration: Duration(milliseconds: 200),
         child: page,
@@ -273,23 +271,29 @@ class FavoritesPage extends StatelessWidget {
       );
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(30),
-          child: Text('You have '
-              '${appState.favorites.length} favorites:'),
-        ),
-        Expanded(
-          child: GridView(
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 400,
-              childAspectRatio: 400 / 80,
+    return SafeArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 80), // Increased height to move content lower
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            child: Text(
+              'You have ${appState.favorites.length} favorites:',
+              style:
+                  theme.textTheme.titleLarge, // Changed headline6 to titleLarge
             ),
-            children: [
-              for (var pair in appState.favorites)
-                ListTile(
+          ),
+          Expanded(
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 400,
+                childAspectRatio: 400 / 80,
+              ),
+              itemCount: appState.favorites.length,
+              itemBuilder: (context, index) {
+                var pair = appState.favorites[index];
+                return ListTile(
                   leading: IconButton(
                     icon: Icon(Icons.delete_outline, semanticLabel: 'Delete'),
                     color: theme.colorScheme.primary,
@@ -301,11 +305,12 @@ class FavoritesPage extends StatelessWidget {
                     pair.asLowerCase,
                     semanticsLabel: pair.asPascalCase,
                   ),
-                ),
-            ],
+                );
+              },
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
