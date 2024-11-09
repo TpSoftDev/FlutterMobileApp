@@ -2,7 +2,7 @@
 
 Namer App is a Flutter application that generates random English word pairs, allowing users to view, like, and save their favorite pairs. This app demonstrates the use of state management, custom widgets, and navigation in Flutter.
 
-User Flow
+# User Flow
 
 The following images and video demonstrate the flow of the Namer App from word generation to managing favorites.
 
