@@ -1,74 +1,51 @@
 Namer App
 
-Namer App is a Flutter application that generates random English word pairs and lets users “like” or “favorite” them. The app uses the english_words package to create random word pairs, and it features a clean, interactive UI with Material Design 3 (Material You). It also includes a favorites section to store and view liked word pairs.
+Namer App is a Flutter application that generates random English word pairs, allowing users to view, like, and save their favorite pairs. This app demonstrates the use of state management, custom widgets, and navigation in Flutter.
 
 Features
 
-    •	Random Word Pair Generation: Generates new random word pairs with each click of the “Next” button.
-    •	Like and Unlike: Users can like a word pair, which adds it to the favorites list, or unlike it to remove it.
-    •	Favorites Page: View all liked word pairs in a separate Favorites section.
-    •	Navigation: The app uses a NavigationRail for switching between the Home and Favorites views.
+    •	Random Word Pair Generation: Generate random word pairs and display them in an interactive UI.
+    •	Favorites Management: Add or remove word pairs from a list of favorites.
+    •	History Tracking: Keep a history of previously generated word pairs.
+    •	Responsive Layout: Adapts layout based on screen width, using a Bottom Navigation Bar for mobile and a Navigation Rail for larger screens.
 
-Tech Stack
+App Structure
 
-    •	Flutter: The main framework for building the app.
-    •	Provider: Used for state management to handle likes, favorites, and word pair generation.
-    •	english_words: A package providing the random word pair functionality.
-
-Getting Started
-
-Prerequisites
-
-    •	Flutter SDK installed.
-    •	Basic understanding of Flutter development.
-
-Installation
-
-    1.	Clone this repository:
-
-git clone https://github.com/your-username/namer-app.git
-cd namer-app
-
-    2.	Install dependencies:
-
-flutter pub get
-
-    3.	Run the app on an emulator or connected device:
-
-flutter run
-
-File Overview
-
-    •	main.dart: Main entry point of the app.
-    •	MyApp: The root widget that sets up the app theme and ChangeNotifierProvider.
-    •	MyAppState: Manages the state, including the current word pair, favorites list, and button functions.
-    •	MyHomePage: Main navigation and layout widget.
-    •	GeneratorPage: Generates and displays the random word pairs with like functionality.
-    •	FavoritesPage: Displays the list of favorited word pairs.
-    •	BigCard: A styled card widget for displaying word pairs in a larger format.
-
-How to Use
-
-    1.	Home Page:
-    •	Click the “Next” button to generate a new random word pair.
-    •	Click the “Like” button to add the current word pair to your favorites or remove it if it’s already liked.
-    2.	Favorites Page:
-    •	Access by selecting the “Favorites” icon in the navigation rail.
-    •	View all your favorited word pairs in a scrollable list.
-
-Customization
-
-    •	Color Scheme: The app uses a deep orange theme with Material Design 3. You can customize colors in ThemeData within the MyApp widget.
-    •	NavigationRail: Easily switch between Home and Favorites pages by selecting the respective icons.
+    •	MyApp: Main entry point. Sets up MaterialApp and ChangeNotifierProvider for state management.
+    •	MyAppState: Handles app state, including current word pair, history, and favorites. Contains methods to generate new pairs and manage favorites.
+    •	MyHomePage: Main app screen with navigation for switching between the generator and favorites pages.
+    •	GeneratorPage: Displays the current word pair, allows users to like it, and fetches the next random word pair.
+    •	FavoritesPage: Lists saved favorites with the option to remove them.
+    •	BigCard: Stylized card for displaying the current word pair.
+    •	HistoryListView: Shows a list of previously generated word pairs with an animated list.
 
 Dependencies
 
-    •	flutter
-    •	english_words
-    •	provider
+    •	english_words: Provides random English word pairs.
+    •	provider: State management solution.
+    •	flutter/material.dart: Core Flutter package for building the UI.
+
+Getting Started
+
+    1.	Clone the Repository: Download the app’s code from the repository.
+    2.	Install Dependencies: Run flutter pub get to install required packages.
+    3.	Run the App: Use flutter run to start the app on your desired platform.
+
+Code Highlights
+
+    •	State Management: MyAppState class, which extends ChangeNotifier, allows for state updates using the Provider package.
+    •	Animated List: HistoryListView uses AnimatedList to provide a smooth animation when adding new word pairs to the history.
+    •	Responsive UI: Layout changes between BottomNavigationBar and NavigationRail based on screen width for a better user experience.
+
+Customization
+
+    •	Theme: Easily customizable by changing the color scheme and primary color in MyApp.
+    •	Favorites Logic: Modify the toggleFavorite and removeFavorite methods in MyAppState to implement additional behavior, such as persistent storage for favorites.
+
+Known Issues
+
+    •	None at the moment. For bug reports, please create an issue in the repository.
 
 License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Enjoy using Namer App!
+This project is licensed under the MIT License.
