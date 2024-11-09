@@ -6,24 +6,24 @@ Namer App is a Flutter application that generates random English word pairs, all
 
 The following images and video demonstrate the flow of the Namer App from word generation to managing favorites.
 
-1. Home Screen - Generating Random Word Pairs
+# 1. Home Screen - Generating Random Word Pairs
 
 The Home screen displays a randomly generated word pair with the option to like it. Tapping the button generates a new word pair.
 ![Simulator Screenshot - iPhone 16 - 2024-11-09 at 14 00 35](https://github.com/user-attachments/assets/3ab28c0a-6abf-4f19-b784-d26b3fd31afb)
 
 
-2. Adding a Word Pair to Favorites
+# 2. Adding a Word Pair to Favorites
 
 To add a word pair to your favorites, tap the “Like” button. The heart icon fills to indicate that the word pair has been added to your list of favorites.
 ![Simulator Screenshot - iPhone 16 - 2024-11-09 at 14 00 52](https://github.com/user-attachments/assets/9009bb0d-45a4-4fef-9d58-3ed35761c675)
 
-3. Viewing Favorites
+# 3. Viewing Favorites
 
 Navigate to the Favorites tab to see all the word pairs you’ve saved. Here, you can view your saved pairs and remove any that you no longer want in your favorites.
 ![Simulator Screenshot - iPhone 16 - 2024-11-09 at 14 01 40](https://github.com/user-attachments/assets/ca88fc95-a611-41fd-842f-f75bb2dd5f1e)
 
 
-4. Tracking History
+# 4. Tracking History
 
 The app also tracks a history of word pairs generated. The History view shows a list of previously generated word pairs, with an animated list for a smooth user experience.
 
