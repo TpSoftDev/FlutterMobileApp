@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//State Class
 class MyAppState extends ChangeNotifier {
   var current = WordPair.random();
 
@@ -33,6 +34,18 @@ class MyAppState extends ChangeNotifier {
     //new random word
     current = WordPair.random();
     notifyListeners(); // Notifies watchers & listeners
+
+    var favorites = <WordPair>[]; // stores fav words
+
+    //logic for adding a current fav
+    void toggleFavorite() {
+      if (favorites.contains(current)) {
+        favorites.remove(current);
+      } else {
+        favorites.add(current);
+      }
+      notifyListeners(); // notify listeners
+    }
   }
 }
 
@@ -43,20 +56,22 @@ class MyHomePage extends StatelessWidget {
     var pair = appState.current; // Good practice for efficiency
 
     return Scaffold(
-      body: Column(
-        children: [
-          Text('A  random awesome idea:'),
-          BigCard(pair: pair),
-
-          // Add a button(widget)
-          ElevatedButton(
-            onPressed: () {
-              //Updating the apps state with the random word
-              appState.getNext();
-            },
-            child: Text('Next'),
-          ),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BigCard(pair: pair),
+            SizedBox(height: 20),
+            // Add a button(widget)
+            ElevatedButton(
+              onPressed: () {
+                //Updating the apps state with the random word
+                appState.getNext();
+              },
+              child: Text('Next'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -80,7 +95,7 @@ class BigCard extends StatelessWidget {
     return Card(
       color: theme.colorScheme.primary,
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(30),
         child: Text(
           pair.asLowerCase,
           style: style,
